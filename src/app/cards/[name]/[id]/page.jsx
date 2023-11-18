@@ -1,4 +1,5 @@
-import type { TCardFull, TSet } from '@/types/tcg';
+import React from 'react';
+import { TCardFull, TSet } from '@/types/tcg';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { cn, getAbilityUrl, getAttackUrl, getTraitUrl } from '@/lib/utils';
@@ -9,7 +10,6 @@ import { Link } from '@/ui/link';
 import Image from '@/ui/image';
 import Card from '@/components/card/link';
 import { getCards, getCard } from '@/lib/fetch';
-import type { Metadata } from 'next';
 import { keywords } from '@/lib/tcg';
 
 type CardParams = { params: { id: string } };
@@ -399,6 +399,7 @@ async function MoreCardsFromSet({ set, cardName }: CardFromSetProps) {
     return <p>No cards found from {SetLink}</p>;
   }
 
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <h2 className="text-2xl flex flex-wrap gap-2">
@@ -406,7 +407,7 @@ async function MoreCardsFromSet({ set, cardName }: CardFromSetProps) {
       </h2>
       <div className="grid gap-4 grid-cols-fluid-sm items-center justify-center">
         {cards.data.map((card) => (
-          <Card {...card} />
+          <Card key={card.id} {...card} />
         ))}
       </div>
     </div>
