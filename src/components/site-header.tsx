@@ -5,6 +5,8 @@ import { Link as CustomLink } from '@/ui/link';
 import { Searchbar } from './searchbar';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import logo from '../../public/types/logo.jpg';
+import Image from 'next/image';
 export default function Header() {
   const [user] = useAuthState(auth);
   const router = useRouter();
@@ -22,7 +24,9 @@ export default function Header() {
         href="/"
         aria-label="go to home"
       >
-        <span className="hidden sm:block">Pokefolder</span>
+        <span className="hidden sm:block">
+          <Image src={logo} alt="logo" width={120} height={50} />
+        </span>
         <span className="sm:hidden">PF</span>
       </CustomLink>
 

@@ -15,7 +15,15 @@ export default function Collections() {
 
   return (
     <div className="container mx-auto my-8 p-4">
-      <h1 className="text-3xl font-bold mb-4">My Collections</h1>
+      <div className="text-left mt-2">
+        <div className="flex justify-left items-center mb-4">
+          <h1 className="text-left text-3xl font-bold mr-2">My Collections</h1>
+          <div className="text-center ml-64 text-3xl">
+            <strong>Total Price:</strong>{' '}
+            {getPrice('GBP', totalCollectionPriceGBP)}
+          </div>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {watchlist.length === 0 ? (
@@ -24,11 +32,6 @@ export default function Collections() {
           // @ts-ignore
           watchlist.map((card) => <Card key={card.id} {...card} />)
         )}
-      </div>
-
-      <div className="text-right mt-4">
-        <strong>Total Price :</strong>{' '}
-        {getPrice('GBP', totalCollectionPriceGBP)}
       </div>
     </div>
   );

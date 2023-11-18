@@ -42,7 +42,7 @@ export default function Card({ ...card }: TCard) {
       {/* Watchlist Button */}
       <button
         onClick={handleWatchlistToggle}
-        className="absolute bottom-2 left-20 px-2 py-1 bg-gray-800 text-white rounded-md opacity-50 hover:opacity-100 transition-opacity"
+        className="absolute bottom-2 left-12 px-2 py-1 bg-gray-800 text-white rounded-md opacity-50 hover:opacity-100 transition-opacity"
       >
         {isInWatchlist(card) ? 'Remove from Collection' : 'Add to Collection'}
       </button>
