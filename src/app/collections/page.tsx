@@ -6,9 +6,9 @@ export default function Collections() {
   const { watchlist } = useWatchlist();
 
   const totalCollectionPriceGBP = watchlist.reduce((total, card) => {
-    const tcgplayerPrice = card.tcgplayer?.prices?.holofoil?.market || 0;
-    const cardmarketPrice = card.cardmarket?.prices?.trendPrice || 0;
-    const totalPrice = tcgplayerPrice + cardmarketPrice;
+    const tcgplayerPrice = card.tcgplayer?.prices?.holofoil?.mid || 0;
+    // const cardmarketPrice = card.cardmarket?.prices?.trendPrice || 0;
+    const totalPrice = tcgplayerPrice;
 
     return total + totalPrice;
   }, 0);
