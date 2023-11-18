@@ -1,3 +1,4 @@
+// Import necessary modules and types
 import type { TCardFull, TSet } from '@/types/tcg';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
@@ -12,8 +13,10 @@ import { getCards, getCard } from '@/lib/fetch';
 import type { Metadata } from 'next';
 import { keywords } from '@/lib/tcg';
 
+// Define the type for route parameters
 type CardParams = { params: { id: string } };
 
+// Function to generate metadata for the card page
 export async function generateMetadata({
   params,
 }: CardParams): Promise<Metadata> {
@@ -29,13 +32,15 @@ export async function generateMetadata({
   };
 }
 
+// Default component for the card page
 export default async function Page({ params }: CardParams) {
   const response = await getCard(params.id);
   const card = response?.data;
+  // If the card is not found, navigate to the 404 page
   if (!card) {
     notFound();
   }
-
+  // Ensure that optional properties are initialized
   card.artist ||= '';
   card.types ||= [];
   card.subtypes ||= [];
@@ -45,6 +50,7 @@ export default async function Page({ params }: CardParams) {
   card.resistances ||= [];
   card.nationalPokedexNumbers ||= [];
 
+  // Render the card details
   return (
     <main className="my-6 md:my-10 flex flex-col gap-2">
       <div className="flex flex-col sm:relative gap-4 sm:flex-row">
@@ -254,6 +260,7 @@ export default async function Page({ params }: CardParams) {
   );
 }
 
+// Component for rendering sections in the card details
 type SectionProps = React.PropsWithChildren<{
   heading: React.ReactNode;
   className?: string;
@@ -267,6 +274,7 @@ function Section({ heading, children, className }: SectionProps) {
   );
 }
 
+// Component for rendering items in the card details
 function Item(props: React.PropsWithChildren<{ title: string }>) {
   return (
     <li className="flex flex-col gap-px">
@@ -276,6 +284,7 @@ function Item(props: React.PropsWithChildren<{ title: string }>) {
   );
 }
 
+// Component for rendering type icons in the card details
 type CardTypeProps = {
   types: { type: string; value?: string }[];
   id: string;
@@ -307,6 +316,7 @@ function TypeIcon({ types, id }: CardTypeProps) {
   );
 }
 
+// Component for rendering legalities in the card details
 type LegalityProps = {
   legalities: TCardFull['legalities'];
   name?: 'sets' | 'card';

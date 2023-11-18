@@ -1,3 +1,4 @@
+// Import necessary modules and components
 'use client';
 import {
   createUserWithEmailAndPassword,
@@ -8,9 +9,12 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import './page.css';
 import { useRouter } from 'next/navigation';
+
+// Main component for the authentication page
 function Page() {
   const router = useRouter();
 
+  // State to manage form input details
   const [details, setDetails] = useState({
     name: '',
     email: '',
@@ -18,6 +22,7 @@ function Page() {
     confirmPassword: '',
   });
 
+  // Use effect to set up click event listeners for switching between sign-in and sign-up modes
   useEffect(() => {
     const handleSignUpClick = () => {
       const container = document.querySelector('.container');
@@ -32,6 +37,7 @@ function Page() {
     const sign_up_btn = document.querySelector('#sign-up-btn');
     const sign_in_btn = document.querySelector('#sign-in-btn');
 
+    // Cleanup event listeners on component unmount
     sign_up_btn?.addEventListener('click', handleSignUpClick);
     sign_in_btn?.addEventListener('click', handleSignInClick);
 
@@ -42,6 +48,7 @@ function Page() {
     };
   }, []);
 
+  // Function to handle sign-in
   const signIn = () => {
     signInWithEmailAndPassword(auth, details.email, details.password)
       .then((auth) => {
@@ -51,6 +58,7 @@ function Page() {
       .catch((error) => console.log(error));
   };
 
+  // Function to handle sign-up
   const signUp = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -66,12 +74,14 @@ function Page() {
     }
   };
 
+  // Function to handle form submission
   const onSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', details);
     router.push('/');
   };
 
+  // Function to handle input changes
   const handleChange = (e) => {
     const { id, value } = e.target;
     setDetails((prevDetails) => ({
@@ -80,6 +90,7 @@ function Page() {
     }));
   };
 
+  // Render the authentication page
   return (
     <div className="container">
       <div className="forms-container">
@@ -247,4 +258,5 @@ function Page() {
   );
 }
 
+// Export the component as the default export
 export default Page;

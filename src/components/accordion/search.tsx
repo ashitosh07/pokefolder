@@ -15,6 +15,7 @@ export async function SetsAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export async function TypesAccordion() {
   const types = await getTypes('types');
   return (
@@ -27,6 +28,7 @@ export async function TypesAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export async function SubtypesAccordion() {
   const subtypes = await getTypes('subtypes');
   return (
@@ -41,6 +43,7 @@ export async function SubtypesAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export async function SupertypesAccordion() {
   const supertypes = await getTypes('supertypes');
   return (
@@ -55,6 +58,7 @@ export async function SupertypesAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export async function RaritiesAccordion() {
   const supertypes = await getTypes('rarities');
   return (
@@ -69,6 +73,7 @@ export async function RaritiesAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export function PokedexAccordion() {
   return (
     <AccordionWithCombobox
@@ -83,6 +88,7 @@ export function PokedexAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export function LegalitiesAccordion() {
   return (
     <AccordionWithCombobox
@@ -101,6 +107,7 @@ export function LegalitiesAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export function MarksAccordion() {
   return (
     <AccordionWithCombobox
@@ -115,6 +122,7 @@ export function MarksAccordion() {
   );
 }
 
+// Async function to fetch and render subtypes accordion
 export function SortAccordion() {
   const order = [
     { id: 'cardmarket', name: 'Cardmarket Prices' },

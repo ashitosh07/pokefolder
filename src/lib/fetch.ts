@@ -1,14 +1,17 @@
+// Import necessary types and utilities
 import type { TCGApiResponse, TCardFull, TSet, TSetFull } from '@/types/tcg';
 import { type Resource, createTCGQueryString } from './tcg';
 import { cache } from 'react';
 import 'server-only';
 
+// API endpoint and headers
 const API_URL = 'https://api.pokemontcg.io/v2/';
 const headers: RequestInit['headers'] = {
   'content-type': 'application/json',
-  'x-api-key': `${process.env.TCG_KEY}`,
+  'x-api-key': `${process.env.TCG_KEY}`, // API key stored in environment variable
 };
 
+// Type definition for fetching sets
 type GetSets = () => Promise<TCGApiResponse<TSet> | null>;
 export const getSets: GetSets = cache(async () => {
   const url = new URL('sets', API_URL);
@@ -16,6 +19,7 @@ export const getSets: GetSets = cache(async () => {
   url.searchParams.set('select', 'id,name,series,releaseDate,images');
 
   try {
+    // Fetch sets from the API
     const response = await fetch(url, { next: { revalidate: 86400 }, headers });
     if (!response.ok) throw new Error('failed to fetch');
     return response.json();
@@ -25,11 +29,13 @@ export const getSets: GetSets = cache(async () => {
   }
 });
 
+// Type definition for fetching types
 type GetTypes = (r: Resource) => Promise<TCGApiResponse<string>>;
 export const getTypes: GetTypes = cache(async (resource) => {
   const url = new URL(resource, API_URL);
 
   try {
+    // Fetch types from the API
     const response = await fetch(url, {
       cache: 'force-cache',
       next: { tags: [resource] },
@@ -44,6 +50,7 @@ export const getTypes: GetTypes = cache(async (resource) => {
   }
 });
 
+// Type definition for searching cards
 type Search = (params: URLSearchParams) => Promise<TCGApiResponse<TCardFull>>;
 
 export const getCards: Search = async (params) => {

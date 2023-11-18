@@ -1,6 +1,9 @@
+// Import Firebase SDK functions
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+
+// Firebase configuration object with API keys and project details
 const firebaseConfig = {
   apiKey: 'AIzaSyA3Ok6MxgnBb2g193lct4G4FVxqYMnbAJg',
   authDomain: 'react-firebase-auth-24a31.firebaseapp.com',
@@ -11,9 +14,14 @@ const firebaseConfig = {
   measurementId: 'G-F9GX9QQMV4',
 };
 
-// Initialize Firebase
-
+// Initialize Firebase app using the provided configuration
 const app = initializeApp(firebaseConfig);
+
+// Get Firebase authentication instance
 const auth = getAuth(app);
+
+// Get Firebase Firestore database instance
 const db = getFirestore(app);
+
+// Export Firebase authentication and Firestore instances
 export { auth, db };

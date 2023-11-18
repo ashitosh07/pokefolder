@@ -1,3 +1,4 @@
+// Import necessary modules and components
 'use client';
 import type { TCard } from '@/types/tcg';
 import { Link } from '@/ui/link';
@@ -6,12 +7,12 @@ import { getCardUrl } from '@/lib/utils';
 import { useState } from 'react';
 import { useWatchlist } from '../../hooks/use-watchlist';
 
-interface CardProps {
-  card: TCard;
-}
-
+// Card component definition
 export default function Card({ ...card }: TCard) {
+  // Use the watchlist hook to manage watchlist state
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
+
+  // Function to handle toggling the card in the watchlist
   const handleWatchlistToggle = () => {
     if (isInWatchlist(card)) {
       removeFromWatchlist(card);
@@ -20,13 +21,16 @@ export default function Card({ ...card }: TCard) {
     }
   };
 
+  // Render the card information and watchlist button
   return (
     <div className="relative" key={card.key}>
+      {/* Link to the detailed card view */}
       <Link
         focus="none"
         className="focus-visible:outline-1 focus-visible:outline-primary group"
         href={getCardUrl(card)}
       >
+        {/* Image of the card */}
         <Image
           referrerPolicy="no-referrer"
           src={card.images.small || card.images.large || '/back.png'}
