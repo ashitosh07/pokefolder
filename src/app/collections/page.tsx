@@ -21,7 +21,7 @@ export default function Collections() {
         {watchlist.length === 0 ? (
           <p className="text-gray-600">Your watchlist is empty.</p>
         ) : (
-          watchlist.map((card) => <Card {...card} />)
+          watchlist.map((card) => <Card key={card.id} {...card} />)
         )}
       </div>
 
