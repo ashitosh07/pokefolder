@@ -88,6 +88,11 @@ export function groupSetsBySeries(sets: TSet[]) {
 }
 
 export function getCardUrl(card: TCard) {
+  if (!card) {
+    // handle the case where card is undefined
+    return '/fallback-url'; // replace with your fallback URL
+  }
+
   const name = format(card.name, {
     case: 'lowercase',
     '&': { from: '&', to: 'and' },
@@ -111,7 +116,10 @@ export function getAttackUrl(name: string) {
   return `/search?${createSearchParams('attacks', name)}`;
 }
 
-export function getPrice(currency: 'EUR' | 'USD', value?: number | null) {
+export function getPrice(
+  currency: 'EUR' | 'USD' | 'GBP',
+  value?: number | null,
+) {
   if (typeof value !== 'number') return '--';
   return new Intl.NumberFormat(undefined, {
     style: 'currency',

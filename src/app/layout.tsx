@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { WatchlistProvider } from '../hooks/use-watchlist';
 import { bungee, rubik } from '@/lib/fonts';
 import Footer from '@/components/site-footer';
 import Header from '@/components/site-header';
@@ -36,15 +37,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
-    <html lang="en" className={`${bungee.variable} ${rubik.variable}`}>
-      <body className="font-rubik bg-background text-foreground">
-        <div className="bg-image" />
-        <div className="px-3 max-w-screen-xl mx-auto ">
-          <Header />
-          {props.children}
-          <Footer />
-        </div>
-      </body>
-    </html>
+    <WatchlistProvider>
+      <html lang="en" className={`${bungee.variable} ${rubik.variable}`}>
+        <body className="font-rubik bg-background text-foreground">
+          <div className="bg-image" />
+          <div className="px-3 max-w-screen-xl mx-auto ">
+            <Header />
+            {props.children}
+            <Footer />
+          </div>
+        </body>
+      </html>
+    </WatchlistProvider>
   );
 }

@@ -162,14 +162,14 @@ export default function Table() {
                       rel="norefer nopenner"
                     >
                       {getPrice(
-                        'USD',
+                        'GBP',
                         card.tcgplayer?.prices?.holofoil?.market,
                       )}
                     </Link>
                   ) : (
                     <>
                       {getPrice(
-                        'USD',
+                        'GBP',
                         card.tcgplayer?.prices?.holofoil?.market,
                       )}
                     </>

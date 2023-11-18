@@ -27,8 +27,11 @@ export interface TSetFull extends TSet {
 }
 
 export interface TCard extends Base {
+  key: string; // Add this line
   images: Partial<CardImage>;
   set: TSet;
+  tcgplayer?: Partial<TCGPlayer>;
+  cardmarket?: Partial<CardMarket>;
 }
 
 type Attack = {

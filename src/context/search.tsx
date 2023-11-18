@@ -31,7 +31,7 @@ const defaults: InitialState = {
   legalities: [],
 };
 
-const initial: InitialState = structuredClone(defaults);
+// const initial: InitialState = structuredClone(defaults);
 const FormContext = createContext<InitialState>(null as any);
 const DispatchContext = createContext<Dispatch<FormAction>>(null as any);
 const useFormContext = () => useContext(FormContext);
@@ -59,7 +59,7 @@ const reducer = (state: InitialState, action: FormAction): InitialState => {
 };
 
 const FormProvider = (props: React.PropsWithChildren) => {
-  const [fields, dispatch] = useReducer(reducer, initial);
+  const [fields, dispatch] = useReducer(reducer, defaults);
   const searchParams = useSearchParams();
 
   useEffect(() => {}, [searchParams]);

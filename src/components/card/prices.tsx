@@ -68,7 +68,7 @@ function PriceItem({ type, value, euros }: PriceItemProps) {
     );
   }
 
-  const price = getPrice(euros ? 'EUR' : 'USD', value);
+  const price = getPrice(euros ? 'EUR' : 'GBP', value);
   type = type.replace(/([A-Z])/g, ' $1');
   type = type.replace(
     /(avg1|avg7|avg30)/gi,

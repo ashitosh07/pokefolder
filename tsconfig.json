@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": false,
+    "skipLibCheck": false,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -23,15 +27,22 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-						"@/ui/*": ["src/components/ui/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@/ui/*": [
+        "src/components/ui/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts", "src/components/search-form",
+    ".next/types/**/*.ts",
+    "src/components/search-form"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
